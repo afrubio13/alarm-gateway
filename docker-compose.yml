@@ -1,0 +1,29 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: alarm_mysql
+    restart: always
+    env_file:        # <--- Agregamos esto para que el contenedor lea el .env
+      - .env
+    environment:
+      - MYSQL_DATABASE=alarms_gateway
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD} # Esto toma el valor de tu .env local
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  api:
+    build: .
+    container_name: alarm_api
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      - DB_HOST=db  # Importante: La API busca el servicio 'db', no 'localhost'
+
+volumes:
+  mysql_data:
