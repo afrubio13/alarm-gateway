@@ -63,6 +63,7 @@ API: http://localhost:8000/docs (Swagger UI interactivo)
 
 5. **Estructura del Proyecto**
 
+```text
 ├── src/
 │   ├── api/            # Endpoints y rutas de FastAPI
 │   ├── database/       # Configuración de SQLAlchemy y modelos
@@ -73,3 +74,4 @@ API: http://localhost:8000/docs (Swagger UI interactivo)
 ├── Dockerfile          # Configuración de imagen de la API
 ├── docker-compose.yml  # Orquestación de servicios
 └── requirements.txt    # Dependencias de Python
+```
