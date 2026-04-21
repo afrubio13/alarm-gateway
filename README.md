@@ -51,8 +51,8 @@ Crea un archivo .env en la raíz con los siguientes valores:
     DB_HOST=db
 
 3. **Levantar el entorno con Docker:**
-   ```bash
-   docker-compose up --build
+    ```bash
+    docker-compose up --build
 
 Este comando descargará las imágenes, instalará las dependencias y levantará la API en el puerto 8000.
 
