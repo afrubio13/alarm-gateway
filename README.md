@@ -39,20 +39,20 @@ Se optó por una **Arquitectura en Capas** para garantizar el mantenimiento y la
 
 1. **Clonar el repositorio:**
    ```bash
-   git clone [https://github.com/tu-usuario/alarm-gateway.git](https://github.com/tu-usuario/alarm-gateway.git)
+   git clone [https://github.com/rubio13/alarm-gateway.git](https://github.com/rubio13/alarm-gateway.git)
    cd alarm-gateway
 
 2. **Configurar variables de entorno:**
 Crea un archivo .env en la raíz con los siguientes valores:
-
-DB_PASSWORD=tu_password_seguro
-DB_NAME=alarm_db
-DB_USER=root
-DB_HOST=db
+    ```bash
+    DB_PASSWORD=tu_password_seguro
+    DB_NAME=alarm_db
+    DB_USER=root
+    DB_HOST=db
 
 3. **Levantar el entorno con Docker:**
-
-docker-compose up --build
+   ```bash
+   docker-compose up --build
 
 Este comando descargará las imágenes, instalará las dependencias y levantará la API en el puerto 8000.
 
