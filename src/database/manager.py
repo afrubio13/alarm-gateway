@@ -97,16 +97,25 @@ class DatabaseManager:
             logging.debug("Data types of the attempted load:\n%s", data_to_load.dtypes)
             raise
 
-    def get_filtered_alarms(self, db, start: datetime, end: datetime, 
+    def get_filtered_alarms(self, db, start_date: datetime, end_date: datetime, 
                             severity: str = None, tag: str = None):
-        query = db.query(AlarmModel).filter(AlarmModel.timestamp.between(start, end))
+        query = db.query(AlarmModel).filter(AlarmModel.timestamp.between(start_date, end_date))
         
         if severity:
             query = query.filter(AlarmModel.severity == severity.upper())
         if tag:
             query = query.filter(AlarmModel.tag == tag)
             
-        return query.order_by(AlarmModel.timestamp.desc()).all()
+        #return query.order_by(AlarmModel.timestamp.desc()).all()
+        # Include Pagination
+        
+        return (
+        query.order_by(AlarmModel.timestamp.desc())
+        .limit(100)
+        .offset(0)
+        .all()
+        )
+        
 
     def get_top_tags(self, db, limit: int = 5):
         return db.query(

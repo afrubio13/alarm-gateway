@@ -38,14 +38,14 @@ def generate_value() -> Union[float, str, Any]:
     """
     random_factor = random.random()
 
-    if random_factor < 0.03:
+    if random_factor < 0.02:
         return round(random.uniform(-100, 0), 2)
-    if random_factor < 0.75:
+    elif random_factor < 0.92:
         return round(random.uniform(10, 100), 2)
-    elif random_factor < 0.85:
+    elif random_factor < 0.95:
         # Simulating European decimal format as a string
         return str(round(random.uniform(10, 100), 2)).replace('.', ',')
-    elif random_factor < 0.95:
+    elif random_factor < 0.97:
         return np.nan
     else:
         return "OFFLINE"
@@ -74,7 +74,7 @@ def generate_severity() -> Any:
     Returns:
         Any: A severity level string or noise.
     """
-    return select_with_noise(SEVERITIES, SEVERITY_NOISE, 0.7)
+    return select_with_noise(SEVERITIES, SEVERITY_NOISE, 0.9)
 
 
 def generate_status() -> Any:
@@ -83,7 +83,7 @@ def generate_status() -> Any:
     Returns:
         Any: A status string or noise.
     """
-    return select_with_noise(STATUSES, STATUS_NOISE, 0.8)
+    return select_with_noise(STATUSES, STATUS_NOISE, 0.9)
 
 
 def generate_tag() -> Any:
@@ -92,7 +92,7 @@ def generate_tag() -> Any:
     Returns:
         Any: A tag string or noise.
     """
-    return select_with_noise(TAGS, TAGS_NOISE, 0.95)
+    return select_with_noise(TAGS, TAGS_NOISE, 0.9)
 
 
 def generate_unit() -> Any:
@@ -101,7 +101,7 @@ def generate_unit() -> Any:
     Returns:
         Any: A unit string or noise.
     """
-    return select_with_noise(UNITS, UNITS_NOISE, 0.85)
+    return select_with_noise(UNITS, UNITS_NOISE, 0.9)
     
 
 def generate_description(descriptions: List[Optional[str]]) -> Optional[str]:
